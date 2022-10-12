@@ -1,4 +1,3 @@
-import { useState } from "React"
 import Select from "./Select"
 
 export default function StartScreen({ setIsQuizRunning, getQuizData, formData, handleInputChange, handleSelectChange, difficultyOptions, categoryOptions }) {

@@ -1,4 +1,3 @@
-
 export default function StartScreen({ quiz, quizData, isQuizRunning, isQuizWon, correctAnswers, backToMenu, playAgain, checkAnswers }) {
 
     return (
