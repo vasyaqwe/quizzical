@@ -1,0 +1,226 @@
+:root {
+  --clr-primary-500: #293264;
+  --clr-primary-400: #4D5B9E;
+  --clr-primary-300: #D6DBF5;
+
+  --clr-correct: #94D7A2;
+  --clr-wrong: #F8BCBC;
+  --clr-alert: #FFFAD1;
+  --clr-neutral-100: #F5F7FB;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+ul {
+  padding: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'],
+ul {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  font-family: 'Karla', sans-serif;
+  min-height: 100vh;
+  background-color: var(--clr-primary-300);
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]),
+a {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+input {
+  width: 100%;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.answer input[type=radio] {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+input[type=radio]:disabled {
+  cursor: not-allowed;
+}
+
+.answer {
+  cursor: pointer;
+  position: relative;
+}
+
+.answer input {
+  display: block;
+  position: absolute;
+  inset: 0;
+}
+
+.answer input {
+  cursor: pointer;
+  opacity: 0.011;
+}
+
+.answer label {
+  border: 1px solid var(--clr-primary-500);
+  padding: 0.4em 1.5em;
+  border-radius: 8px;
+  font-size: .7rem;
+  font-weight: 500;
+}
+
+.answer input[type=radio]:hover:not([disabled])+label {
+  background-color: var(--clr-primary-300);
+}
+
+.answer input[type=radio]:checked+label:not([class]) {
+  background-color: var(--clr-primary-300);
+  border: 0;
+}
+
+.answer input[type=radio]:disabled+label {
+  opacity: 50%;
+  cursor: not-allowed;
+}
+
+label {
+  background-repeat: no-repeat;
+  background-size: 300%;
+  background-position: -40%;
+}
+
+label.wrong {
+  background-color: #F8BCBC;
+  border: 0;
+  transition: .25s ease-in-out;
+}
+
+label.correct {
+  background-color: #94D7A2;
+  opacity: 100% !important;
+  border: 0;
+  transition: .25s ease-in-out;
+}
+
+@media(min-width: 550px) {
+  .answer label {
+    font-size: .88rem;
+  }
+}
+
+.type-radio:checked,
+.type-radio:not(:checked) {
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.type-radio:checked+label,
+.type-radio:not(:checked)+label {
+  position: relative;
+  padding-left: 28px;
+  cursor: pointer;
+  line-height: 20px;
+  display: inline-block;
+}
+
+.type-radio:checked+label:before,
+.type-radio:not(:checked)+label:before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 20px;
+  height: 20px;
+  border: .05em solid var(--clr-primary-400);
+  border-radius: 100%;
+  background: #fff;
+}
+
+.type-radio:checked+label:after,
+.type-radio:not(:checked)+label:after {
+  content: '';
+  width: 12px;
+  height: 12px;
+  background: var(--clr-primary-400);
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  border-radius: 100%;
+  transition: all 0.25s ease;
+}
+
+.type-radio:not(:checked)+label:after {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.type-radio:checked+label:after {
+  opacity: 1;
+  transform: scale(1);
+}
