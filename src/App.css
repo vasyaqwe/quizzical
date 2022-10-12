@@ -132,6 +132,7 @@ main {
   height: 100%;
 }
 
+
 .start-screen,
 .quiz-screen,
 .loading-wrapper,
@@ -140,6 +141,20 @@ main {
   background-image: url('./assets/blob-top.svg'), url('./assets/blob-bottom.svg');
   background-repeat: no-repeat, no-repeat;
   background-position: top right, bottom left;
+}
+
+.start-screen {
+  animation: blobs 500ms ease 1 forwards;
+}
+
+@keyframes blobs {
+  0% {
+    background-size: 0%, 0%;
+  }
+
+  100% {
+    background-size: 150px, 150px;
+  }
 }
 
 .start-screen,
