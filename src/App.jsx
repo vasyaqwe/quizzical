@@ -137,9 +137,8 @@ function App() {
   return (
     <main>
       {isQuizWon && <Confetti />}
-      {isLoading && <Spinner />}
-      {
-        quizData.length === 0 ?
+      {isLoading ? <Spinner />
+        : quizData.length === 0 ?
           failedToFetchData ?
             <Error backToMenu={backToMenu} /> :
             <StartScreen isQuizRunning={isQuizRunning}
