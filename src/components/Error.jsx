@@ -1,4 +1,8 @@
-export default function Error({ backToMenu }) {
+import { useContext } from 'react'
+import { Context } from "../Context"
+
+function Error() {
+    const { backToMenu } = useContext(Context)
     return (
         <div className="error-screen">
             <p>Failed to get the quiz :(</p>
@@ -9,3 +13,4 @@ export default function Error({ backToMenu }) {
         </div>
     )
 }
+export default Error

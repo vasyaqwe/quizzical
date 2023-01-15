@@ -1,7 +1,11 @@
-export default function StartScreen({ quiz, quizData, isQuizRunning, isQuizWon, correctAnswers, backToMenu, playAgain, checkAnswers }) {
+import { useContext } from 'react'
+import { Context } from "../Context"
+
+function StartScreen({ quiz }) {
+    const { quizData, isQuizRunning, isQuizWon, correctAnswers, backToMenu, playAgain, checkAnswers } = useContext(Context)
 
     return (
-        <div className='quiz-screen'>
+        <div className='quiz-screen' >
             <div className="quiz-content">
                 {quiz}
             </div>
@@ -16,3 +20,4 @@ export default function StartScreen({ quiz, quizData, isQuizRunning, isQuizWon, 
     )
 }
 
+export default StartScreen

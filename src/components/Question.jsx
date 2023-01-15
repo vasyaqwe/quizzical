@@ -1,6 +1,9 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import { Context } from "../Context"
 
-export default function Question({ setCheckedAnswers, handleChange, answers, item, questionName, answerId, isQuizRunning }) {
+export default function Question({ answers, item, questionName, answerId }) {
+    const { handleAnswerChange, isQuizRunning, quizData, checkedAnswers } = useContext(Context)
+
     const parseEntities = txt => new DOMParser().parseFromString(txt, 'text/html').body.innerText
     const shuffleArray = arr => {
         const newArr = arr.slice()
@@ -17,9 +20,17 @@ export default function Question({ setCheckedAnswers, handleChange, answers, ite
     )
     function handleChange(event) {
         setAnswerToQuestion(event.target.value)
-        setCheckedAnswers(prevAnswers => {
-            return [...prevAnswers.filter(answer => answer.name !== event.target.name), event.target].sort((a, b) => a.id - b.id)
-        })
+        handleAnswerChange(event)
+    }
+    function answerClassName(value) {
+        if (!isQuizRunning && quizData.some(i => i.correct_answer === value) &&
+            checkedAnswers.some(i => i.value === value)) {
+            return 'correct'
+        } else if (!isQuizRunning && !quizData.some(i => i.correct_answer === value) &&
+            checkedAnswers.some(i => i.value === value)) {
+            return 'wrong'
+        }
+        return 'unanswered'
     }
     const answersEls = allAnswers.map((answer, i) =>
         <div key={i}
@@ -29,7 +40,7 @@ export default function Question({ setCheckedAnswers, handleChange, answers, ite
                 id={answerId}
                 checked={answerToQuestion === answer}
                 value={answer} disabled={!isQuizRunning} />
-            <label htmlFor="answer">{parseEntities(answer)}</label>
+            <label className={answerClassName(answer)} htmlFor="answer">{parseEntities(answer)}</label>
         </div >)
 
     return (

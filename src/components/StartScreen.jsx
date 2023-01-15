@@ -1,13 +1,17 @@
 import Select from "./Select"
+import { useContext } from 'react'
+import { Context } from "../Context"
+import { categoryOptions, difficultyOptions } from '../utils'
 
-export default function StartScreen({ setIsQuizRunning, getQuizData, formData, handleInputChange, handleSelectChange, difficultyOptions, categoryOptions }) {
-    const { questionsNumber, type, difficultyValue, categoryValue } = formData;
+export default function StartScreen() {
+    const { getQuizData, startQuiz, formData, handleInputChange, handleSelectChange } = useContext(Context)
+    const { questionsNumber, type, difficultyValue, categoryValue } = formData
 
     function handleSubmit(e) {
         e.preventDefault()
         const inputs = [...document.querySelectorAll('input')]
         if (inputs.every(input => input.checkValidity())) {
-            setIsQuizRunning(true)
+            startQuiz()
             getQuizData(questionsNumber, type, difficultyValue.label.toLocaleLowerCase(), categoryValue.value + 7)
         }
     }

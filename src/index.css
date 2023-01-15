@@ -140,7 +140,7 @@ input[type=radio]:disabled {
   background-color: var(--clr-primary-300);
 }
 
-.answer input[type=radio]:checked+label:not([class]) {
+.answer input[type=radio]:checked+label.unanswered {
   background-color: var(--clr-primary-300);
   border: 0;
 }

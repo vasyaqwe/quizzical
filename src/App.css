@@ -93,12 +93,12 @@ h1 {
 
 .btn-back {
   color: var(--clr-primary-500);
-  width: 90px;
-  height: 70px;
+  width: 80px;
+  height: 62px;
   position: absolute;
   bottom: 0;
   left: 0;
-  background-image: url('./assets/blob-dark-blue.svg'), url('./assets/blob-bottom.svg');
+  background-image: url('./assets/blob-dark-blue.svg');
   background-size: 100%, 100%;
   background-position: -100px 100px, top;
   background-repeat: no-repeat, no-repeat;
@@ -107,7 +107,6 @@ h1 {
   padding-right: 1em;
   transition: all 250ms ease;
 }
-
 
 .btn-back:hover {
   background-position: top, top;
@@ -120,8 +119,8 @@ h1 {
   }
 
   .btn-back {
-    width: 120px;
-    height: 80px;
+    width: 100px;
+    height: 79px;
     font-size: 1.1rem;
   }
 }
@@ -135,7 +134,6 @@ main {
 
 .start-screen,
 .quiz-screen,
-.loading-wrapper,
 .error-screen {
   border-radius: .5rem;
   background-image: url('./assets/blob-top.svg'), url('./assets/blob-bottom.svg');
@@ -144,10 +142,14 @@ main {
 }
 
 .start-screen {
-  animation: blobs 500ms ease 1 forwards;
+  animation: start-screen 500ms ease 1 forwards;
 }
 
-@keyframes blobs {
+.quiz-screen {
+  animation: quiz-screen 500ms ease 1 forwards;
+}
+
+@keyframes start-screen {
   0% {
     background-size: 0%, 0%;
   }
@@ -173,7 +175,7 @@ main {
   padding: min(8vw, 3em) min(7vw, 5em) min(5vw, 1.5em);
   display: grid;
   background-size: 60px, 80px;
-  background-image: url('./assets/blob-top.svg');
+  background-image: url('./assets/blob-top.svg'), url('./assets/blob-bottom.svg');
 }
 
 .error-screen {
@@ -224,6 +226,8 @@ main {
   justify-content: center;
   gap: .5rem;
   margin-left: 2rem;
+  max-height: 120px;
+  align-self: end;
 }
 
 .result p {
@@ -232,9 +236,29 @@ main {
   font-size: .9rem;
 }
 
+@keyframes quiz-screen {
+  0% {
+    background-size: 0%, 0%;
+  }
+
+  100% {
+    background-size: 60px, 80px;
+  }
+}
+
 @media(min-width: 550px) {
   .quiz-screen {
     background-size: 100px, 100px;
+  }
+
+  @keyframes quiz-screen {
+    0% {
+      background-size: 0%, 0%;
+    }
+
+    100% {
+      background-size: 100px, 100px;
+    }
   }
 
   .error-screen {
@@ -271,8 +295,6 @@ main {
   place-items: center;
   width: 100%;
   height: 100%;
-  background-size: 150px;
-
 }
 
 .loading-spinner {
