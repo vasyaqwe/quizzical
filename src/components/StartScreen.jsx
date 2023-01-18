@@ -39,7 +39,6 @@ export default function StartScreen() {
                 </div>
                 <button className='btn btn-start'>Start quiz</button>
             </form>
-
         </div>
     )
 }
