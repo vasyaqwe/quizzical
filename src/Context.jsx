@@ -12,7 +12,6 @@ function ContextProvider({ children }) {
     const [failedToFetchData, setFailedToFetchData] = useState(false)
     const [checkedAnswers, setCheckedAnswers] = useState([])
     const [correctAnswers, setCorrectAnswers] = useState([])
-
     const [formData, setFormData] = useState({
         questionsNumber: '',
         type: 'multiple',
@@ -86,9 +85,6 @@ function ContextProvider({ children }) {
             setCorrectAnswers(prev => [...prev, e.target.value])
         }
     }
-    console.log(correctAnswers)
-
-
     return (
         <Context.Provider value={{
             quizData, isQuizRunning,

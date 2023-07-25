@@ -1,5 +1,5 @@
 import './App.css'
-import { useState, useContext } from 'react'
+import { useContext } from 'react'
 import { Context } from './Context'
 import Confetti from 'react-confetti'
 import Question from './components/Question'
@@ -10,15 +10,11 @@ import Error from './components/Error'
 
 function App() {
   const { quizData, isQuizWon, isLoading, failedToFetchData } = useContext(Context)
-  console.log(quizData)
 
   const quiz = quizData
     .map((item, i) => {
       return <Question key={i}
-        item={item}
-        answers={item.incorrect_answers}
-        questionName={`question${i + 1}`}
-        answerId={i + 1}
+        item={item} incorrectAnswers={item.incorrect_answers}
       />
     })
 
